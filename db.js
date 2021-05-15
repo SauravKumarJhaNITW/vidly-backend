@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-function connectDB() {
-    mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true })
+async function connectDB() {
+    await mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true })
         .then(() => console.log('connected to db..'))
         .catch((err) => console.error("couldn't connect to db..", err))
 }

@@ -9,7 +9,10 @@ app.use('/api/genres', genres)
 app.use('/', home);
 const db = require('./db')
 
-db.connectDB();
+async function fun1() {
+    await db.connectDB();
+}
+fun1();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on port ${port}`));
