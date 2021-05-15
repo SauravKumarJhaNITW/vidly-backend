@@ -1,18 +1,18 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 require('dotenv').config();
 const genres = require('./routes/genres')
 const home = require('./routes/home')
+
+mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('connected to db..'))
+    .catch((err) => console.error("couldn't connect to db..", err))
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/api/genres', genres)
 app.use('/', home);
-const db = require('./db')
-
-async function fun1() {
-    await db.connectDB();
-}
-fun1();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on port ${port}`));
