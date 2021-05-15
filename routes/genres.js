@@ -6,7 +6,7 @@ const db = require('../db')
 
 router.get('/', (req, res) => {
     async function f2() {
-        db.connectDB();
+        await db.connectDB();
         const genres = await db.getGenres();
         res.status(200).send(genres);
     }
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     async function f3() {
-        db.connectDB();
+        await db.connectDB();
         const genre = await db.getGenre(parseInt(req.params.id));
         if (!genre || genre.length < 1) return res.status(404).send('genre with given id was not found');
         res.status(200).send(genre);
@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
     }
 
     async function f1() {
-        db.connectDB();
+        await db.connectDB();
         const cnt = await db.getCnt();
         // console.log('cnt', cnt)
         const genre = {
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
     }
 
     async function f4() {
-        db.connectDB();
+        await db.connectDB();
         const result = await db.updateGenre(parseInt(req.params.id), req.body.name);
         res.send(result);
     }
@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     async function f6() {
-        db.connectDB();
+        await db.connectDB();
         const result = await deleteGenre(req.params.id)
         res.send(result);
     }
