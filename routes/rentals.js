@@ -42,7 +42,7 @@ router.post('/', async(req, res) => {
 
         res.send(rental);
     } catch (err) {
-        return res.status(400).send('Invalid customer or movie.');
+        return res.status(400).send(`Invalid customer or movie.${err}`);
     }
 
 });
