@@ -4,6 +4,8 @@ const app = express();
 require('dotenv').config();
 const genres = require('./routes/genres')
 const movies = require('./routes/movies')
+const rentals = require('./routes/rentals');
+const customers = require('./routes/customers');
 const home = require('./routes/home')
 
 mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -16,6 +18,8 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use('/api/genres', genres)
 app.use('/api/movies', movies)
+app.use('/api/customers', customers);
+app.use('/api/rentals', rentals);
 app.use('/', home);
 
 const port = process.env.PORT || 3000;
