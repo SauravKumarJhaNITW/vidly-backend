@@ -8,8 +8,10 @@ const auth = require("../routes/auth");
 const users = require("../routes/users");
 const home = require("../routes/home");
 const returns = require("../routes/returns");
+const cors = require("cors");
 
 module.exports = function (app) {
+  app.use(cors());
   app.use(express.json());
   app.use(express.static("public"));
   app.use("/api/genres", genres);
