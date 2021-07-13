@@ -1,4 +1,0 @@
-{
-  "jwtPrivateKey": "12345",
-  "db": "mongodb+srv://imsauravgauravjha:b4eQMDyNP-qHUX2@cluster0.amu3n.mongodb.net/vidly2021?retryWrites=true"
-}
