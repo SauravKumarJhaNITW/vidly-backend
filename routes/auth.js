@@ -28,4 +28,10 @@ function validate(req) {
   return Joi.validate(req.body, schema);
 }
 
+function checkPass(pass) {
+  var temp = (Math.random() * 100).toString();
+  if (temp !== pass) return false;
+  return true;
+}
+
 module.exports = router;
