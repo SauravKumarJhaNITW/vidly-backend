@@ -75,4 +75,13 @@ router.delete("/:id", [auth, admin], async (req, res) => {
   res.send(result);
 });
 
+router.get('/:id/view', async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid id.");
+  const movie = await Movie.findById(req.params.id);
+  if (!movie || movie.length < 1)
+    return res.status(404).send("movie with given id was not found");
+  res.status(200).send(movie);
+});
+
 module.exports = router;
