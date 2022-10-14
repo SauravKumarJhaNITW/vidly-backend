@@ -20,7 +20,7 @@ router.post("/", auth, async (req, res) => {
   });
   await customer.save();
 
-  res.send(customer);
+  res..status(200).send(customer);
 });
 
 router.put("/:id", auth, async (req, res) => {
